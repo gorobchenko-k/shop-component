@@ -118,18 +118,24 @@ searchInput.onfocus = function () {
     searchProducts.hidden = false;
 }
 
-
+//если курсор убран скрываем список поиска
 function hiddenProductsList() {
     searchProducts.hidden = true;
 }
+//при клике в любои месте окна браузера, но не по списку продуктов или строке поиска, скрывать список продуктов
+window.addEventListener('click', e => { // при клике в любом месте окна браузера
+    const target = e.target // находим элемент, на котором был клик
+    //  если этот элемент или его родительские элементы не список продуктов и не поле input
+    if (!target.closest('.search__products') && !target.closest('.search__input')) {
+        hiddenProductsList(); // то закрываем окно навигации, удаляя активный класс
+    }
+})
 
-//если курсор убран скрываем список поиска
-// searchInput.onblur = function () {
-//     searchProducts.hidden = true;
-// }
 
+//------------------ изменение индикатора
 const indicator = document.querySelector('.sales-list__indicator');
 let valueIndicator = 120;
-valueIndicator <= 50 ? 
-    indicator.style.background=`linear-gradient(${valueIndicator}deg, #ddd 50%, transparent 50%), linear-gradient(90deg, #ddd 50%, steelblue 50%)` :
-    indicator.style.background=`linear-gradient(${valueIndicator}deg, transparent 50%, steelblue 50%), linear-gradient(90deg, #ddd 50%, steelblue 50%)`;
+valueIndicator <= 50 ?
+    indicator.style.background = `linear-gradient(${valueIndicator}deg, #ddd 50%, transparent 50%), linear-gradient(90deg, #ddd 50%, steelblue 50%)` :
+    indicator.style.background = `linear-gradient(${valueIndicator}deg, transparent 50%, steelblue 50%), linear-gradient(90deg, #ddd 50%, steelblue 50%)`;
+
