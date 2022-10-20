@@ -213,8 +213,8 @@ body {
   height: 30px;
   position: relative;
   border-radius: 50%;
-  background-image: linear-gradient(0deg, #ddd 50%, transparent 50%),
-    linear-gradient(90deg, #ddd 50%, steelblue 50%);
+  background-image: linear-gradient(-89deg, #ddd 50%, transparent 50%),
+    linear-gradient(91deg, #ddd 50%, steelblue 50%);
 }
 
 .sales-list__indicator:after {
@@ -311,7 +311,7 @@ body {
 }
 
 .sales-list__sum {
-  width: 100px;
+  width: 140px;
 }
 
 .sales-list__price {}
