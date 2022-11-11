@@ -2,11 +2,12 @@ const searchInput = document.querySelector('.search__input-value');
 const searchProducts = document.querySelector('.search__products'); // .search__products
 const productsList = document.querySelector('.list-products'); //ul
 const salesList = document.querySelector('.sales-list'); //ul 
+const salesSumValue = document.querySelector('.component__title-value');
 
 
 let productsListItems = document.getElementsByClassName('list-products__item');
 let salesListItems = document.getElementsByClassName("sales-list__item"); //document.querySelectorAll('.sales-list__item');
-let indicators = document.getElementsByClassName('sales-list__indicator');
+let indicators = document.getElementsByClassName('sales-list__indicator-span');
 let plusSalesList = document.getElementsByClassName('sales-list__plus');
 let minusSalesList = document.getElementsByClassName('sales-list__minus');
 
@@ -27,7 +28,7 @@ let products = [
     {
         id: "UPC-0456К12",
         name: "Двухсекционная прижимная пневмобалкастанка HOMMEL L32",
-        price: 25,
+        price: 2500,
         quantityInStock: "20 шт."
     },
     {
@@ -63,7 +64,9 @@ function loadsalesList() {
     let i = 0;
     for (let product of sales) {
         salesListStr += `<li class="sales-list__item">
-                        <div class="sales-list__indicator"></div>
+                        <div class="sales-list__indicator">
+                            <span class="sales-list__indicator-span"> </span>
+                        </div>
                         <div class="sales-list__text">
                             <h2 class="sales-list__title">${product[0].name}</h2>
                             <div class="sales-list__code">${product[0].id}</div>
@@ -146,6 +149,16 @@ function changeIndicator() {
     }
 }
 
+// изменение общей суммы продаж
+function changeSalesSumValue() {
+    let sum = 0;
+    for (let product of sales) {
+        sum += product[0].price * product[1];
+    }
+    salesSumValue.innerHTML = sum;
+
+}
+
 //изменение количества проданного товара
 function changeQuantitySold(indexElem, operator) {
     let product = Array.from(sales)[indexElem][0];
@@ -160,6 +173,7 @@ function changeQuantitySold(indexElem, operator) {
         salesListItems[indexElem].querySelector('.sales-list__sum-value').innerHTML = product.price * count + " ₽";
 
         changeIndicator();
+        changeSalesSumValue();
     }
 }
 
@@ -171,5 +185,6 @@ function addSalesListEvent() {
     }
 
 }
+
 
 
