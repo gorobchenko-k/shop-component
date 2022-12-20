@@ -88,7 +88,7 @@ body {
   visibility: hidden;
   opacity: 0;
   overflow: auto;
-  height: 345px;
+  max-height: 345px;
   border-bottom: 1px solid #c0c0c0;
   border-radius: 4px;
 }

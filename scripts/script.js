@@ -17,7 +17,7 @@ let salesListStr = ``;
 let sales = new Map();
 
 
-function loadProductsList() {
+function loadProductsList(products) {
     for (let product of products) {
         productsListStr += `<li class="list-products__item">
         <h2 class="list-products__title">${product.name}</h2>
@@ -29,8 +29,7 @@ function loadProductsList() {
     }
     productsList.innerHTML = productsListStr;
     productsListStr = ``;
-    addProductsListEvent();
-
+    addProductsListEvent(products);
 }
 
 function loadsalesList() {
@@ -63,15 +62,15 @@ function loadsalesList() {
     checkSalesList();
 }
 
-loadProductsList();
-addProductsListEvent();
+// loadProductsList(products);
+// addProductsListEvent();
 loadsalesList();
 addSalesListEvent();
 
-function addProductsListEvent() {
-    for (let product = 0; product < productsListItems.length; product++) {
-        productsListItems[product].addEventListener('click', () => {
-            sales.set(products[product], 0);
+function addProductsListEvent(products) {
+    for (let index = 0; index < productsListItems.length; index++) {
+        productsListItems[index].addEventListener('click', () => {
+            sales.set(products[index], 0);
             loadsalesList();
             hiddenProductsList();
             addSalesListEvent();
@@ -80,11 +79,13 @@ function addProductsListEvent() {
 }
 
 searchInput.onfocus = function () {
+    loadProductsList(products);
     searchProducts.classList.add("active");
 }
 
 function hiddenProductsList() {
     searchProducts.classList.remove("active");
+    searchInput.value = "";
 }
 
 window.addEventListener('click', e => {

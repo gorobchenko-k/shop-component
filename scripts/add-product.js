@@ -8,7 +8,7 @@ formButton.addEventListener("click", () => {
 
     if (checkValue(code) && checkValue(name) && checkValue(price) && checkValue(quantity)) {
         addProduct(code.value, name.value, price.value, quantity.value);
-        loadProductsList();
+        loadProductsList(products);
         document.querySelector('#popup').classList.remove('open');
         bodyUnlock();
     } else {
