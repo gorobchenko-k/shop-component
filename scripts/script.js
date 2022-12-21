@@ -62,14 +62,31 @@ function loadsalesList() {
     checkSalesList();
 }
 
-// loadProductsList(products);
-// addProductsListEvent();
 loadsalesList();
 addSalesListEvent();
 
 function addProductsListEvent(products) {
     for (let index = 0; index < productsListItems.length; index++) {
         productsListItems[index].addEventListener('click', () => {
+            // if (products[index].quantityInStock.replace(/[^0-9]/g, "") > 0 && !sales.has(products[index])) {
+            //     sales.set(products[index], 0);
+            //     loadsalesList();
+            //     hiddenProductsList();
+            //     addSalesListEvent();
+            // } else {
+            //     popupOpen(document.querySelector('#popup-warning-quantity'));
+            // }
+
+            if (products[index].quantityInStock.replace(/[^0-9]/g, "") <= 0) {
+                popupOpen(document.querySelector('#popup-warning-quantity'));
+                return;
+            }
+
+            if (sales.has(products[index])) {
+                popupOpen(document.querySelector('#popup-warning-re-adding'));
+                return;
+            }
+
             sales.set(products[index], 0);
             loadsalesList();
             hiddenProductsList();

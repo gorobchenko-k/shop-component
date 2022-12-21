@@ -68,6 +68,10 @@ body.lock {
     margin: 0 0 20px 0;
 }
 
+.title-warning {
+    color: #ff0000;
+}
+
 .form {
     display: flex;
     flex-direction: column;
