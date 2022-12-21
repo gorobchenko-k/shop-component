@@ -77,9 +77,10 @@ body.lock {
     flex-direction: column;
 }
 
-.form input {
-    margin: 10px;
-    width: 100%;
+.form input,
+.form select {
+    /* margin: 10px;
+    width: 100%; */
     padding: 8px 15px;
     margin: 10px 0 0 0;
     border: #c0c0c0 solid 1px;
@@ -93,4 +94,12 @@ body.lock {
 
 .form__button {
     cursor: pointer;
+}
+
+.form__quantity-num {
+    width: 69%;
+}
+
+.form__quantity-select {
+    width: 30%;
 }

@@ -50,10 +50,17 @@
                 <div class="popup__title">Новый товар</div>
                 <div class="popup__text">
                     <form class="popup__form form" action="">
-                        <input class="form__code" type="text" required placeholder="Артикул товара" >
+                        <input class="form__code" type="text" required placeholder="Артикул товара">
                         <input class="form__name" type="text" placeholder="Наименование товара">
                         <input class="form__price" type="number" placeholder="Стоимость товара">
-                        <input class="form__quantity" type="number" placeholder="Количество товара на складе">
+                        <div class="form__quantity">
+                            <input class="form__quantity-num" type="number" min="0" placeholder="Количество товара на складе">
+                            <select class="form__quantity-select">
+                                <option value="pieces">шт.</option>
+                                <option value="kilogram">кг</option>
+                                <option value="liters">л</option>
+                            </select>
+                        </div>
                         <input class="form__button" type="button" value="Добавить">
                     </form>
                 </div>
@@ -65,7 +72,7 @@
         <div class="popup__body">
             <div class="popup__content">
                 <a href="#" class="popup__close close-popup">X</a>
-                <div class="popup__title title-warning">Товара нет на складе!</div>               
+                <div class="popup__title title-warning">Товара нет на складе!</div>
             </div>
         </div>
     </div>
@@ -74,7 +81,7 @@
         <div class="popup__body">
             <div class="popup__content">
                 <a href="#" class="popup__close close-popup">X</a>
-                <div class="popup__title title-warning">Товара уже добавлен!</div>               
+                <div class="popup__title title-warning">Товара уже добавлен!</div>
             </div>
         </div>
     </div>
